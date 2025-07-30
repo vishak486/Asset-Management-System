@@ -13,6 +13,7 @@ const AssetList = () => {
     console.log('AssetList data:', assetList, 'Error:', error);
 
     useEffect(()=>{
+        console.log("Dispatching fetchAssets with search:", search);
         dispatch(fetchAssets(search))
     },[search])
 
