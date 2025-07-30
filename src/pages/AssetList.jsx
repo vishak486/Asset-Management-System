@@ -10,6 +10,7 @@ const AssetList = () => {
     const { assetList, loading ,error } = useSelector((state) => state.asset)
     const dispatch=useDispatch()
     const [search,setSearch]=useState('')
+    console.log('AssetList data:', assetList, 'Error:', error);
 
     useEffect(()=>{
         dispatch(fetchAssets(search))
@@ -68,7 +69,7 @@ const AssetList = () => {
                             <td>{formatDate(asset.purchaseDate)}</td>
                             <td>₹{asset.purchasePrice}</td>
                             <td>{asset.warranty}</td>
-                            <td>{asset.vendorId.vendorName}</td>
+                            <td>{asset.vendorId?.vendorName ?? 'N/A'}</td>
                             <td>
                                 <EditAsset asset={asset} />
                                 <Button onClick={()=>dispatch(deleteAsset(asset._id))} variant="danger" size="sm">Delete</Button>
